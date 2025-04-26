@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run-dev": "npx ts-node src/index.ts",
+    "run-dev": "cd src && npx ts-node index.ts",
     "build": "npx tsc"
   },
   "keywords": [],
@@ -14,6 +14,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "skeleton": "git+https://github.com/ifloor/PosDesenvolvimentoWebSkeleton.git"
   }
 }
