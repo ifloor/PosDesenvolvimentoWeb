@@ -1,0 +1,5 @@
+1. Desenvolver aplicação em node.js
+2. Copiar o arquivo: https://github.com/ifloor/PosDesenvolvimentoWeb/blob/main/base/products.json para o projeto de vocês
+3. Ler esse arquivo para a aplicação (e definer a classe) e receber os objetos
+4. Filtrar (tirar) os produtos com categorias não permitidas. Utilizar a API para ver quais categorias são permitidas ou não. https://posdesweb.igormaldonado.com.br/api/allowedCategory?category=moda
+5. Escrever os ids e nomes dos produtos permitidos no arquivo processed.json
