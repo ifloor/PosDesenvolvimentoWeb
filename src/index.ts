@@ -1,12 +1,9 @@
+import {InitialLoader} from "../marketplace/productsLoad/InitialLoader";
 
-import {ProductCategory} from "skeleton/dist/types";
-
-const world = 'world';
-
-export function hello(who: string = world): string {
-  return `Hello ${who}! `;
+async function run() {
+  let allProducts = await InitialLoader.loadInitialData();
+  let allowedProducts = await InitialLoader.filterOutNotAllowedCategories(allProducts)
+  console.log("Allowed products: ", allowedProducts);
 }
 
-console.log(hello());
-
-const a: ProductCategory = ProductCategory.Moda;
+run().then(_ => {console.log("Finished")}).catch(e => {console.error("Error: ", e)});
