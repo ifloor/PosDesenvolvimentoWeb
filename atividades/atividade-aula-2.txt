@@ -1,0 +1,8 @@
+1. Get para listar todos os produtos
+2. Get para obter product por id específico
+3. Post para criar um novo produto
+4. Put para atualizar um produto existente
+5. Put definindo a imagem de um produto
+6. Delete para remover um produtor
+7. (opcional) adicionar schema validation no 3
+8. (opcional) adicionar hook para logar todas chamadas
