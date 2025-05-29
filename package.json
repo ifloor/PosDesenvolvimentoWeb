@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/fastify-multipart": "^0.7.2",
     "typescript": "^5.8.3"
   },
   "dependencies": {

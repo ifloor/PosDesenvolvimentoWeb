@@ -45,6 +45,23 @@ export class ProductRepository {
     return productToAdd;
   }
 
+  public updateExisting(id: number, existingProduct: ProductFromFile): ProductFromFile {
+    const existingIndex = this.products.findIndex(p => p.id === id.toString());
+    if (existingIndex === -1) {
+      throw new Error(`Product with id ${id} not found`);
+    }
+    this.products[existingIndex] = existingProduct;
+    return existingProduct;
+  }
+
+  public deleteById(id: number) {
+    const existingIndex = this.products.findIndex(p => p.id === id.toString());
+    if (existingIndex === -1) {
+      throw new Error(`Product with id ${id} not found`);
+    }
+    this.products.splice(existingIndex, 1);
+  }
+
   static dumb(products: ProductFromFile[]): ProductRepository {
     const repository = new ProductRepository();
     repository.products = products;

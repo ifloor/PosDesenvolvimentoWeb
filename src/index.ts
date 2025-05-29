@@ -2,6 +2,8 @@ import {InitialLoader} from "./marketplace/productsLoad/InitialLoader";
 import Fastify from 'fastify'
 import {RestLayer} from "./rest/RestLayer";
 import {ProductRepository} from "./database/ProductRepository";
+import fastifyMultipart from '@fastify/multipart';
+
 
 export const KnownCategories: Set<string> = new Set();
 
@@ -16,12 +18,13 @@ async function run() {
   const productRepository = ProductRepository.dumb(allowedProducts);
 
   const fastify = Fastify({ logger: true });
-  RestLayer.wire(fastify, productRepository);
-
-  // Define a GET endpoint
-  fastify.get('/api/example', async (request: any, reply: any) => {
-    return { message: 'Hello from Fastify!' };
+  fastify.register(fastifyMultipart);
+  fastify.addHook('onRequest', (request, reply, done) => {
+    console.log(`Received request: ${request.method} ${request.url}`);
+    done();
   });
+
+  RestLayer.wire(fastify, productRepository);
 
   // Start the server
   const start = async () => {
