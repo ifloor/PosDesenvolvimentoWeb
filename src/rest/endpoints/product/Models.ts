@@ -2,7 +2,7 @@ export class Models {
   public static ProductResponseSchema = {
     type: "object",
     properties: {
-      id: { type: "string" },
+      id: { type: "number" },
       name: { type: "string" },
       description: { type: "string" },
       price: { type: "number" },

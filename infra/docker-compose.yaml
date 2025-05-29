@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgis-umami:
+    image: kartoza/postgis:17-3.5
+    container_name: postgis
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASS: admin
+    volumes:
+      - postgis_storage:/var/lib/postgresql
+    restart: always
+
+volumes:
+  postgis_storage:
+    driver: local

@@ -18,7 +18,7 @@ export class ProductRepository {
     return this.products;
   }
 
-  public getById(id: string): ProductFromFile | undefined {
+  public getById(id: number): ProductFromFile | undefined {
     for (let p = this.products.length - 1; p >= 0; p--) {
       if (this.products[p].id === id) {
         return this.products[p];
@@ -30,7 +30,7 @@ export class ProductRepository {
 
   public saveNew(newProduct: NewProduct): ProductFromFile {
     const productToAdd: ProductFromFile = {
-      id: (this.biggerId + 1).toString(),
+      id: (this.biggerId + 1),
       name: newProduct.name,
       description: newProduct.description,
       price: newProduct.price,
@@ -46,7 +46,7 @@ export class ProductRepository {
   }
 
   public updateExisting(id: number, existingProduct: ProductFromFile): ProductFromFile {
-    const existingIndex = this.products.findIndex(p => p.id === id.toString());
+    const existingIndex = this.products.findIndex(p => p.id === id);
     if (existingIndex === -1) {
       throw new Error(`Product with id ${id} not found`);
     }
@@ -55,7 +55,7 @@ export class ProductRepository {
   }
 
   public deleteById(id: number) {
-    const existingIndex = this.products.findIndex(p => p.id === id.toString());
+    const existingIndex = this.products.findIndex(p => p.id === id);
     if (existingIndex === -1) {
       throw new Error(`Product with id ${id} not found`);
     }
@@ -65,7 +65,7 @@ export class ProductRepository {
   static dumb(products: ProductFromFile[]): ProductRepository {
     const repository = new ProductRepository();
     repository.products = products;
-    repository.biggerId = products.reduce((max, product) => Math.max(max, parseInt(product.id)), 0);
+    repository.biggerId = products.reduce((max, product) => Math.max(max, product.id), 0);
 
 
     return repository

@@ -1,6 +1,7 @@
 
-export interface ProductFromFile {
-  id: string
+export interface ProductFromFile
+{
+  id: number
   name: string
   description: string
   price: number
